@@ -69,23 +69,23 @@ public class BottomSheetAdapterBuilder {
     }
 
     public void addItem(int id, String title, Drawable icon, int itemTextColor,
-                        int itemBackground, int tintColor) {
+                        int itemBackground, int tintColor, float textSize) {
         if (mMenu == null) {
             mMenu = new MenuBuilder(mContext);
         }
         MenuItem item = mMenu.add(Menu.NONE, id, Menu.NONE, title);
         item.setIcon(icon);
-        mItems.add(new BottomSheetMenuItem(item, itemTextColor, itemBackground, tintColor));
+        mItems.add(new BottomSheetMenuItem(item, itemTextColor, itemBackground, tintColor, textSize));
     }
 
     @SuppressLint("InflateParams")
     public View createView(int titleTextColor, int backgroundDrawable, int backgroundColor,
                            int dividerBackground, int itemTextColor, int itemBackground,
-                           int tintColor, BottomSheetItemClickListener itemClickListener) {
+                           int tintColor, float textSize, BottomSheetItemClickListener itemClickListener) {
 
         if (mFromMenu) {
             mItems = createAdapterItems(dividerBackground, titleTextColor,
-                    itemTextColor, itemBackground, tintColor);
+                    itemTextColor, itemBackground, tintColor, textSize);
         }
 
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
@@ -149,7 +149,7 @@ public class BottomSheetAdapterBuilder {
 
     private List<BottomSheetItem> createAdapterItems(int dividerBackground, int titleTextColor,
                                                      int itemTextColor, int itemBackground,
-                                                     int tintColor) {
+                                                     int tintColor, float textSize) {
         List<BottomSheetItem> items = new ArrayList<>();
         mTitles = 0;
 
@@ -180,12 +180,12 @@ public class BottomSheetAdapterBuilder {
                         MenuItem subItem = subMenu.getItem(j);
                         if (subItem.isVisible()) {
                             items.add(new BottomSheetMenuItem(subItem, itemTextColor,
-                                    itemBackground, tintColor));
+                                    itemBackground, tintColor, textSize));
                             addedSubMenu = true;
                         }
                     }
                 } else {
-                    items.add(new BottomSheetMenuItem(item, itemTextColor, itemBackground, tintColor));
+                    items.add(new BottomSheetMenuItem(item, itemTextColor, itemBackground, tintColor, textSize));
                 }
             }
         }

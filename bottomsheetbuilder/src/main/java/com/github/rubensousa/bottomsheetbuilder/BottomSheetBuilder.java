@@ -73,6 +73,7 @@ public class BottomSheetBuilder {
     private AppBarLayout mAppBarLayout;
     private Context mContext;
     private BottomSheetItemClickListener mItemClickListener;
+    private float mTextSize;
 
     public BottomSheetBuilder(Context context, CoordinatorLayout coordinatorLayout) {
         mContext = context;
@@ -154,7 +155,7 @@ public class BottomSheetBuilder {
     }
 
     public BottomSheetBuilder addItem(int id, String title, Drawable icon) {
-        mAdapterBuilder.addItem(id, title, icon, mItemTextColor, mItemBackground, mIconTintColor);
+        mAdapterBuilder.addItem(id, title, icon, mItemTextColor, mItemBackground, mIconTintColor, mTextSize);
         return this;
     }
 
@@ -226,6 +227,11 @@ public class BottomSheetBuilder {
         return this;
     }
 
+    public BottomSheetBuilder setItemTextSize(float textSize){
+        mTextSize = textSize;
+        return this;
+    }
+
     public View createView() {
 
         if (mMenu == null && mAdapterBuilder.getItems().isEmpty()) {
@@ -240,7 +246,7 @@ public class BottomSheetBuilder {
 
         View sheet = mAdapterBuilder.createView(mTitleTextColor, mBackgroundDrawable,
                 mBackgroundColor, mDividerBackground, mItemTextColor, mItemBackground,
-                mIconTintColor, mItemClickListener);
+                mIconTintColor, mTextSize, mItemClickListener);
 
         ViewCompat.setElevation(sheet, mContext.getResources()
                 .getDimensionPixelSize(R.dimen.bottomsheet_elevation));
@@ -291,7 +297,7 @@ public class BottomSheetBuilder {
 
         View sheet = mAdapterBuilder.createView(mTitleTextColor, mBackgroundDrawable,
                 mBackgroundColor, mDividerBackground, mItemTextColor, mItemBackground,
-                mIconTintColor, dialog);
+                mIconTintColor, mTextSize, dialog);
 
         sheet.findViewById(R.id.fakeShadow).setVisibility(View.GONE);
         dialog.setAppBar(mAppBarLayout);

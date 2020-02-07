@@ -38,9 +38,10 @@ class BottomSheetMenuItem implements BottomSheetItem {
 
     @DrawableRes
     private int mBackground;
+    private float mTextSize;
 
     public BottomSheetMenuItem(MenuItem item, @ColorInt int textColor, @DrawableRes int background,
-                               @ColorInt int tintColor) {
+                               @ColorInt int tintColor, float textSize) {
         mMenuItem = item;
         mIcon = item.getIcon();
         mId = item.getItemId();
@@ -48,6 +49,7 @@ class BottomSheetMenuItem implements BottomSheetItem {
         mTextColor = textColor;
         mBackground = background;
         mTintColor = tintColor;
+        mTextSize = textSize;
 
         // Check if we have a tint to be applied to an icon
         if (mTintColor != -1 && mIcon != null) {
@@ -81,5 +83,9 @@ class BottomSheetMenuItem implements BottomSheetItem {
     @Override
     public String getTitle() {
         return mTitle;
+    }
+
+    public float getTextSize() {
+        return mTextSize;
     }
 }

@@ -18,6 +18,7 @@ package com.github.rubensousa.bottomsheetbuilder.adapter;
 
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -189,6 +190,7 @@ class BottomSheetItemAdapter extends RecyclerView.Adapter<BottomSheetItemAdapter
             textView.setText(item.getTitle());
             int color = item.getTextColor();
             int background = item.getBackground();
+            float textSize = item.getTextSize();
 
             if (color != 0) {
                 textView.setTextColor(color);
@@ -196,6 +198,10 @@ class BottomSheetItemAdapter extends RecyclerView.Adapter<BottomSheetItemAdapter
 
             if (background != 0) {
                 itemView.setBackgroundResource(background);
+            }
+
+            if (textSize != 0) {
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
             }
 
         }
