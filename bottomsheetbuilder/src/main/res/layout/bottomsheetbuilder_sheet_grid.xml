@@ -10,6 +10,14 @@
         android:layout_height="2dp"
         android:background="@drawable/bottom_sheet_shadow" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/design_bottom_sheet_additional_top">
+
+    </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
@@ -20,5 +28,13 @@
         android:paddingLeft="@dimen/bottomsheet_grid_horizontal_margin"
         android:paddingRight="@dimen/bottomsheet_grid_horizontal_margin"
         android:paddingStart="@dimen/bottomsheet_grid_horizontal_margin" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/design_bottom_sheet_additional_bottom">
+
+    </LinearLayout>
 
 </LinearLayout>
